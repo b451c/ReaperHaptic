@@ -5,6 +5,43 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Planned
+
+- Windows support
+- Additional DAW support
+- Custom waveform intensity settings
+- Multi-item drag support improvements
+
+## [1.1.0] - 2024-12-24
+
+### Added
+
+- **Configuration GUI**: Native REAPER gfx-based configuration panel
+  - Toggle switches for all 8 haptic event types
+  - LED indicator that flashes green on haptic feedback
+  - Collapse/expand mode (click +/- button) for minimal footprint
+  - Dock support (press `D` or click dock button) for REAPER Docker
+  - Settings persistence via REAPER ExtState
+  - Background operation - script continues when window is closed
+- Screenshot in README documentation
+
+### Changed
+
+- Simplified CONFIG structure - event toggles now in `CONFIG.events` table
+- Reduced console output for cleaner startup
+- Streamlined OSC message code
+
+### Removed
+
+- Removed redundant config options (now controlled via GUI):
+  - `grid_snap_enabled`
+  - `item_snap_enabled`
+  - `marker_snap_enabled`
+  - `clip_check_tracks`
+  - `marker_crossing_enabled`
+
 ## [1.0.0] - 2024-12-24
 
 ### Added
@@ -36,13 +73,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 100ms debounce on snap detection
 - Per-event waveform configuration
 - Debug mode for troubleshooting
-
-## [Unreleased]
-
-### Planned
-
-- Windows support
-- Additional DAW support
-- Configuration UI in Logi Options+
-- Custom waveform intensity settings
-- Multi-item drag support improvements

@@ -1,7 +1,7 @@
 -- ReaperHaptic Monitor Script
 -- Monitors REAPER events and sends OSC messages to the ReaperHaptic plugin
 -- Author: falami.studio
--- Version: 1.1 (with GUI)
+-- Version: 1.1.0
 
 -- ============================================================================
 -- CONFIGURATION
