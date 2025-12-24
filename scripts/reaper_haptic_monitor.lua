@@ -1,7 +1,7 @@
 -- ReaperHaptic Monitor Script
 -- Monitors REAPER events and sends OSC messages to the ReaperHaptic plugin
 -- Author: falami.studio
--- Version: 1.1.0
+-- Version: 1.1.1
 
 -- ============================================================================
 -- CONFIGURATION
@@ -815,30 +815,16 @@ end
 -- ============================================================================
 
 local function init()
-    reaper.ShowConsoleMsg("\n========================================\n")
-    reaper.ShowConsoleMsg("ReaperHaptic Monitor v1.2 (with GUI)\n")
-    reaper.ShowConsoleMsg("========================================\n")
-
     -- Load saved settings
     loadSettings()
 
-    -- Initialize socket
-    if initSocket() then
-        reaper.ShowConsoleMsg("OSC target: " .. CONFIG.osc_host .. ":" .. CONFIG.osc_port .. "\n")
-    end
+    -- Initialize socket (shows error only if LuaSocket not found)
+    initSocket()
 
     -- Initialize GUI
     initGui()
 
-    reaper.ShowConsoleMsg("Monitoring started.\n")
-    reaper.ShowConsoleMsg("Tips:\n")
-    reaper.ShowConsoleMsg("  - Click +/- to collapse/expand\n")
-    reaper.ShowConsoleMsg("  - Click dock icon or press 'D' to dock/undock\n")
-    reaper.ShowConsoleMsg("  - Close window to run in background\n")
-    reaper.ShowConsoleMsg("  - Re-run script to show window again\n")
-    reaper.ShowConsoleMsg("----------------------------------------\n\n")
-
-    -- Send test message
+    -- Send test haptic
     sendOsc("/reaper/snap")
 
     state.last_update_time = reaper.time_precise()
@@ -851,7 +837,6 @@ end
 
 local function onExit()
     gfx.quit()
-    reaper.ShowConsoleMsg("\nReaperHaptic Monitor stopped.\n")
 end
 
 reaper.atexit(onExit)
