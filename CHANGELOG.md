@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Custom waveform intensity settings
 - Multi-item drag support improvements
 
-## [1.1.0] - 2024-12-24
+## [1.1.0] - 2025-12-24
 
 ### Added
 
@@ -42,7 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `clip_check_tracks`
   - `marker_crossing_enabled`
 
-## [1.0.0] - 2024-12-24
+## [1.0.0] - 2025-12-24
 
 ### Added
 
