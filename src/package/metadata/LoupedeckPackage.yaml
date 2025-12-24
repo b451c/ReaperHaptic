@@ -1,0 +1,68 @@
+# ==================================================================================================
+# GENERAL SETTINGS
+# ==================================================================================================
+
+# Package type. Must be plugin4 for plugins.
+type: plugin4
+
+# Name that identifies the plugin.
+name: ReaperHaptic
+
+# Plugin name that is shown to the user.
+displayName: REAPER Haptic
+
+# Short description of the plugin.
+description: Provides haptic feedback to MX Master 4 mouse based on REAPER DAW events like snapping, clipping, recording, and markers.
+
+# Name of the plugin library file.
+pluginFileName: ReaperHapticPlugin.dll
+
+# Plugin version.
+version: 1.0
+
+# Author of the plugin.
+author: falami.studio
+
+# Copyright information.
+copyright: Copyright 2025 falami.studio. All rights reserved.
+
+
+# ==================================================================================================
+# PLUGIN PROPERTIES
+# ==================================================================================================
+
+# Location of plugin files on macOS (relative to the plugin base directory).
+pluginFolderMac: bin
+
+# Location of plugin files on Windows (relative to the plugin base directory).
+# Uncomment if you want to support Windows.
+# pluginFolderWin: bin
+
+# List of devices the plugin is optimized for.
+# MX Master 4 is automatically detected when HasHapticMapping capability is enabled
+supportedDevices: []
+
+# List of plugin capabilities.
+pluginCapabilities:
+    # Enable haptic feedback mapping
+    - HasHapticMapping
+
+# Minimum Loupedeck version supported by the plugin.
+minimumLoupedeckVersion: 6.0
+
+
+# ==================================================================================================
+# LICENSE
+# ==================================================================================================
+
+# Name of the license that the plugin is licensed under.
+license: MIT
+
+# URL of the plugin license.
+licenseUrl: https://opensource.org/licenses/MIT
+
+# URL of the support page
+supportPageUrl: https://github.com/falami-studio/reaper-haptic/issues
+
+# URL of the plugin homepage
+homePageUrl: https://falami.studio

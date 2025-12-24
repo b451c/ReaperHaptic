@@ -1,0 +1,39 @@
+displayName: REAPER Events
+description: Haptic events triggered by REAPER DAW actions
+
+events:
+  - name: snap
+    displayName: Snap
+    description: Triggered when an item snaps to grid, marker, or another item while dragging
+
+  - name: clip
+    displayName: Clip Detected
+    description: Triggered when audio exceeds 0dB (clipping)
+
+  - name: recordStart
+    displayName: Record Start
+    description: Triggered when recording begins
+
+  - name: recordStop
+    displayName: Record Stop
+    description: Triggered when recording ends
+
+  - name: renderComplete
+    displayName: Render Complete
+    description: Triggered when rendering/bouncing finishes
+
+  - name: markerCrossed
+    displayName: Marker Crossed
+    description: Triggered when the playhead crosses a marker or region boundary
+
+  - name: itemAligned
+    displayName: Item Aligned
+    description: Triggered when items become aligned with each other
+
+  - name: playStart
+    displayName: Play Start
+    description: Triggered when playback begins
+
+  - name: playStop
+    displayName: Play Stop
+    description: Triggered when playback stops

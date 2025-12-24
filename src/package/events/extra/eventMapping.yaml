@@ -1,0 +1,51 @@
+# Haptic waveform mappings for REAPER events
+# Available waveforms:
+# - Precision: sharp_collision, damp_collision, subtle_collision, damp_state_change
+# - Progress: sharp_state_change, completed, mad, firework, wave, angry_alert, square, happy_alert
+# - Notifications: knock, ringing, jingle
+
+haptics:
+  # Snap feedback - precise, immediate tactile confirmation
+  snap:
+    DEFAULT: knock
+    MX Master 4: sharp_collision
+
+  # Clipping alert - strong warning feedback
+  clip:
+    DEFAULT: ringing
+    MX Master 4: angry_alert
+
+  # Recording started - clear confirmation
+  recordStart:
+    DEFAULT: knock
+    MX Master 4: sharp_state_change
+
+  # Recording stopped - double confirmation feeling
+  recordStop:
+    DEFAULT: knock
+    MX Master 4: damp_state_change
+
+  # Render complete - celebratory feedback
+  renderComplete:
+    DEFAULT: happy_alert
+    MX Master 4: completed
+
+  # Marker crossed - subtle notification
+  markerCrossed:
+    DEFAULT: knock
+    MX Master 4: subtle_collision
+
+  # Items aligned - quick precision feedback
+  itemAligned:
+    DEFAULT: knock
+    MX Master 4: damp_collision
+
+  # Play started - confirmation
+  playStart:
+    DEFAULT: knock
+    MX Master 4: subtle_collision
+
+  # Play stopped - confirmation
+  playStop:
+    DEFAULT: knock
+    MX Master 4: subtle_collision
