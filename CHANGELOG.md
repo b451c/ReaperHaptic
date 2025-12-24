@@ -14,6 +14,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Custom waveform intensity settings
 - Multi-item drag support improvements
 
+## [1.1.2] - 2025-12-24
+
+### Fixed
+
+- Dock position now persists correctly - window opens in the same docker location after REAPER restart
+- Saves actual docker index instead of just docked/undocked state
+
 ## [1.1.1] - 2025-12-24
 
 ### Changed

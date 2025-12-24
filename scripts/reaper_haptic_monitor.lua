@@ -1,7 +1,7 @@
 -- ReaperHaptic Monitor Script
 -- Monitors REAPER events and sends OSC messages to the ReaperHaptic plugin
 -- Author: falami.studio
--- Version: 1.1.1
+-- Version: 1.1.2
 
 -- ============================================================================
 -- CONFIGURATION
@@ -53,7 +53,7 @@ local gui = {
     visible = true,
     collapsed = false,
     was_closed = false,
-    docked = false,
+    dock_index = 0,  -- 0 = not docked, >0 = docker index
 
     -- LED state
     led_on = false,
@@ -104,7 +104,7 @@ local function saveSettings()
 
     -- Save GUI state
     reaper.SetExtState("ReaperHaptic", "collapsed", gui.collapsed and "1" or "0", true)
-    reaper.SetExtState("ReaperHaptic", "docked", gui.docked and "1" or "0", true)
+    reaper.SetExtState("ReaperHaptic", "dock_index", tostring(gui.dock_index), true)
 end
 
 local function loadSettings()
@@ -122,8 +122,8 @@ local function loadSettings()
     gui.collapsed = (collapsed == "1")
     gui.h = gui.collapsed and gui.h_mini or gui.h_full
 
-    local docked = reaper.GetExtState("ReaperHaptic", "docked")
-    gui.docked = (docked == "1")
+    local dock_index = reaper.GetExtState("ReaperHaptic", "dock_index")
+    gui.dock_index = tonumber(dock_index) or 0
 end
 
 -- ============================================================================
@@ -228,11 +228,16 @@ local function drawDockButton(x, y, docked)
 end
 
 local function toggleDock()
-    gui.docked = not gui.docked
-    if gui.docked then
-        gfx.dock(1)  -- Dock to default position
+    local current = gfx.dock(-1)
+    if current == 0 then
+        -- Currently undocked - dock to last known position (or default 1)
+        local target = gui.dock_index > 0 and gui.dock_index or 1
+        gfx.dock(target)
+        gui.dock_index = target
     else
-        gfx.dock(0)  -- Undock
+        -- Currently docked - save position and undock
+        gui.dock_index = current
+        gfx.dock(0)
     end
     saveSettings()
 end
@@ -253,9 +258,12 @@ local function drawGui()
         toggleDock()
     end
 
-    -- Sync dock state with actual gfx dock state
+    -- Sync dock state with actual gfx dock state (user may drag to dock manually)
     local current_dock = gfx.dock(-1)
-    gui.docked = (current_dock ~= 0)
+    if current_dock ~= 0 and current_dock ~= gui.dock_index then
+        gui.dock_index = current_dock
+        saveSettings()
+    end
 
     -- Clear background
     setColor(gui.colors.bg)
@@ -281,7 +289,7 @@ local function drawGui()
         setColor(gui.colors.btn_hover)
         gfx.rect(dock_btn.x, dock_btn.y, dock_btn.w, dock_btn.h, 1)
     end
-    drawDockButton(gui.w - 55, 13, gui.docked)
+    drawDockButton(gui.w - 55, 13, gui.dock_index > 0)
 
     -- Title
     setColor(gui.colors.text)
@@ -397,13 +405,12 @@ local function initGui()
     -- Update height based on collapsed state
     gui.h = gui.collapsed and gui.h_mini or gui.h_full
 
-    -- Initialize graphics window (dock parameter: 0=normal, 1=docked)
-    local dock_state = gui.docked and 1 or 0
-    gfx.init("ReaperHaptic", gui.w, gui.h, dock_state, 100, 100)
+    -- Initialize graphics window (dock parameter: 0=normal, >0=docker index)
+    gfx.init("ReaperHaptic", gui.w, gui.h, gui.dock_index, 100, 100)
     gui.visible = true
 
     -- Try to set always on top when not docked (works on some systems with JS extension)
-    if not gui.docked then
+    if gui.dock_index == 0 then
         local hwnd = reaper.JS_Window_Find and reaper.JS_Window_Find("ReaperHaptic", true)
         if hwnd then
             reaper.JS_Window_SetZOrder(hwnd, "TOPMOST")
