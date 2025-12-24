@@ -21,6 +21,14 @@ Feel your edits - get tactile feedback when items snap together, when audio clip
 | **Render Complete** | Notification when rendering finishes |
 | **Marker Crossing** | Light feedback when playhead crosses markers during playback |
 
+## Screenshot
+
+<p align="center">
+  <img src="docs/images/ReaperHaptic.png" alt="ReaperHaptic Configuration GUI" width="220">
+</p>
+
+The configuration panel lets you toggle individual haptic events on/off. The LED indicator flashes green when haptic feedback is sent. Supports docking in REAPER's Docker.
+
 ## Requirements
 
 - **macOS** 14+ (Sonoma or later)
@@ -136,9 +144,17 @@ cd mavriq-lua-sockets
 
 ## Configuration
 
-### Lua Script Settings
+### GUI Configuration (Recommended)
 
-Edit `reaper_haptic_monitor.lua`:
+The script includes a built-in configuration panel:
+- **Toggle events**: Click checkboxes to enable/disable individual haptic events
+- **Collapse**: Click +/- button to minimize to LED-only mode
+- **Dock**: Press `D` or click dock button to dock in REAPER's Docker
+- **Settings persist** automatically between sessions
+
+### Advanced Settings
+
+Edit `reaper_haptic_monitor.lua` for advanced options:
 
 ```lua
 local CONFIG = {
@@ -154,10 +170,6 @@ local CONFIG = {
 
     -- Clipping detection
     clip_threshold_db = 0.0,    -- dB threshold
-    clip_check_master = true,   -- Monitor master track
-
-    -- Features
-    marker_crossing_enabled = true,
 
     -- Debug
     debug = false               -- Enable console output
