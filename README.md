@@ -1,5 +1,6 @@
 # ReaperHaptic
 
+[![Version](https://img.shields.io/badge/version-1.1.2-blue.svg)](../../releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/platform-macOS-blue.svg)](https://www.apple.com/macos)
 [![.NET](https://img.shields.io/badge/.NET-8.0-purple.svg)](https://dotnet.microsoft.com/)
@@ -148,9 +149,11 @@ cd mavriq-lua-sockets
 
 The script includes a built-in configuration panel:
 - **Toggle events**: Click checkboxes to enable/disable individual haptic events
+- **LED indicator**: Flashes green when haptic feedback is sent
 - **Collapse**: Click +/- button to minimize to LED-only mode
 - **Dock**: Press `D` or click dock button to dock in REAPER's Docker
-- **Settings persist** automatically between sessions
+- **Background mode**: Close window to run in background (re-run script to show again)
+- **Settings persist** automatically between sessions (including dock position)
 
 ### Advanced Settings
 
@@ -238,8 +241,12 @@ ReaperHaptic/
 │           └── extra/
 │               └── eventMapping.yaml
 ├── scripts/
-│   └── reaper_haptic_monitor.lua  # REAPER monitoring script
+│   └── reaper_haptic_monitor.lua  # REAPER monitoring script (with GUI)
+├── docs/
+│   └── images/                    # Documentation images
 ├── build.sh                       # Build script
+├── CHANGELOG.md                   # Version history
+├── CONTRIBUTING.md                # Contribution guidelines
 ├── LICENSE
 └── README.md
 ```
