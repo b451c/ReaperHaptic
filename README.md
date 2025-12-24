@@ -84,6 +84,10 @@ Then in REAPER:
 1. Go to **Extensions** > **Startup actions** > **Set**
 2. Find and add `reaper_haptic_monitor.lua`
 
+**Optional**: Install toolbar icon for quick access:
+1. Copy `toolbar_icons/` contents to `~/Library/Application Support/REAPER/Data/toolbar_icons/`
+2. Right-click REAPER toolbar > **Customize toolbar** > find ReaHaptic icon
+
 ### Step 3: Install LuaSocket for REAPER
 
 REAPER uses a modified Lua interpreter that requires a special build of LuaSocket.
@@ -242,6 +246,10 @@ ReaperHaptic/
 │               └── eventMapping.yaml
 ├── scripts/
 │   └── reaper_haptic_monitor.lua  # REAPER monitoring script (with GUI)
+├── toolbar_icons/                 # REAPER toolbar icons
+│   ├── ReaHaptic.png              # 100% scale
+│   ├── 150/ReaHaptic.png          # 150% scale
+│   └── 200/ReaHaptic.png          # 200% scale
 ├── docs/
 │   └── images/                    # Documentation images
 ├── build.sh                       # Build script
