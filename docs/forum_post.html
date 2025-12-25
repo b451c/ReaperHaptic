@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReaperHaptic - Forum Post</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        .post {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .screenshot {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .screenshot img {
+            max-width: 220px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        h2 {
+            font-size: 16px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 13px;
+        }
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 13px;
+        }
+        a {
+            color: #0066cc;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .download-btn:hover {
+            background: #218838;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 25px 0;
+        }
+        .footer {
+            font-size: 14px;
+            color: #666;
+        }
+        .thread-title {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="thread-title">
+        <strong>Thread Title:</strong> [SCRIPT] ReaperHaptic - Haptic feedback for Logitech MX Master 4 mouse
+    </div>
+
+    <div class="post">
+        <h1>ReaperHaptic</h1>
+        <p class="subtitle">Feel your edits - haptic feedback for Logitech MX Master 4 mouse</p>
+
+        <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/b451c/ReaperHaptic/main/docs/images/ReaperHaptic.png" alt="ReaperHaptic Configuration GUI">
+        </div>
+
+        <h2>What is it?</h2>
+        <p>ReaperHaptic triggers haptic feedback on your Logitech MX Master 4 mouse based on REAPER events. Get tactile "clicks" when items snap together, vibrations when audio clips, subtle feedback when recording starts, and more.</p>
+
+        <h2>Features</h2>
+        <ul>
+            <li><strong>Item Snap Detection</strong> - haptic "click" when items touch other items, markers, time selection, or playhead</li>
+            <li><strong>Clipping Alert</strong> - strong vibration when master track exceeds 0dB</li>
+            <li><strong>Transport Feedback</strong> - subtle haptics for record/play start and stop</li>
+            <li><strong>Render Complete</strong> - notification when rendering finishes</li>
+            <li><strong>Marker Crossing</strong> - light feedback when playhead crosses markers during playback</li>
+            <li><strong>Configuration GUI</strong> - toggle individual events, LED indicator, dockable window</li>
+        </ul>
+
+        <h2>Requirements</h2>
+        <ul>
+            <li>macOS 14+ (Sonoma or later)</li>
+            <li>Logitech MX Master 4 mouse</li>
+            <li>Logi Options+ installed and running</li>
+            <li>REAPER 7.0+</li>
+            <li><a href="https://github.com/mavriq-dev/mavriq-lua-sockets/releases">mavriq-lua-sockets</a> for REAPER</li>
+        </ul>
+
+        <h2>How it works</h2>
+        <pre>REAPER (Lua Script) --OSC/UDP--> ReaperHaptic (Logi Options+ Plugin) --Haptic API--> MX Master 4</pre>
+        <p>The Lua script monitors REAPER events and sends OSC messages to a Logi Options+ plugin, which triggers the appropriate haptic waveforms on your mouse.</p>
+
+        <h2>Installation</h2>
+        <ol>
+            <li>Download <strong>ReaperHaptic.lplug4</strong> from GitHub releases - double-click to install</li>
+            <li>Download <strong>reaper_haptic_monitor.lua</strong> to your REAPER Scripts folder</li>
+            <li>Install <a href="https://github.com/mavriq-dev/mavriq-lua-sockets/releases">mavriq-lua-sockets</a></li>
+            <li>In REAPER: Actions > Load ReaScript > select the script</li>
+            <li>(Optional) Add to startup actions for automatic loading</li>
+        </ol>
+
+        <h2>Download</h2>
+        <a href="https://github.com/b451c/ReaperHaptic/releases" class="download-btn">Download from GitHub</a>
+
+        <h2>Source Code & Documentation</h2>
+        <p><a href="https://github.com/b451c/ReaperHaptic">https://github.com/b451c/ReaperHaptic</a></p>
+
+        <hr>
+
+        <p class="footer">Feedback and bug reports welcome! This is my first REAPER script and Logi Options+ plugin.</p>
+    </div>
+</body>
+</html>
