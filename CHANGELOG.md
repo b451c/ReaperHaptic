@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Toggle state support for REAPER toolbar - icon now properly shows active/inactive state
 - Script registers as toggle action using `SetToggleCommandState`
+- Toolbar icons with Normal and Active states (100%, 150%, 200% scales)
 
 ## [1.1.2] - 2025-12-24
 
