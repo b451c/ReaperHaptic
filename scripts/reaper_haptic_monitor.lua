@@ -1,7 +1,7 @@
 -- ReaperHaptic Monitor Script
 -- Monitors REAPER events and sends OSC messages to the ReaperHaptic plugin
 -- Author: falami.studio
--- Version: 1.1.2
+-- Version: 1.1.3
 
 -- ============================================================================
 -- CONFIGURATION
@@ -839,14 +839,30 @@ local function init()
 end
 
 -- ============================================================================
+-- TOGGLE STATE (for toolbar icon)
+-- ============================================================================
+
+local function setToggleState(state)
+    local _, _, section_id, command_id = reaper.get_action_context()
+    if command_id ~= 0 then
+        reaper.SetToggleCommandState(section_id, command_id, state)
+        reaper.RefreshToolbar2(section_id, command_id)
+    end
+end
+
+-- ============================================================================
 -- SCRIPT ENTRY POINT
 -- ============================================================================
 
 local function onExit()
+    setToggleState(0)  -- Set toggle OFF when script stops
     gfx.quit()
 end
 
 reaper.atexit(onExit)
+
+-- Set toggle ON when script starts
+setToggleState(1)
 
 -- Start the script
 init()

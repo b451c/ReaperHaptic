@@ -14,6 +14,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Custom waveform intensity settings
 - Multi-item drag support improvements
 
+## [1.1.3] - 2025-12-25
+
+### Added
+
+- Toggle state support for REAPER toolbar - icon now properly shows active/inactive state
+- Script registers as toggle action using `SetToggleCommandState`
+
 ## [1.1.2] - 2025-12-24
 
 ### Fixed

@@ -1,6 +1,6 @@
 # ReaperHaptic
 
-[![Version](https://img.shields.io/badge/version-1.1.2-blue.svg)](../../releases)
+[![Version](https://img.shields.io/badge/version-1.1.3-blue.svg)](../../releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/platform-macOS-blue.svg)](https://www.apple.com/macos)
 [![.NET](https://img.shields.io/badge/.NET-8.0-purple.svg)](https://dotnet.microsoft.com/)
