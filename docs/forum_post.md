@@ -57,7 +57,7 @@ The Lua script monitors REAPER events and sends OSC messages to a Logi Options+ 
 [B]Source Code & Documentation[/B]
 [URL="https://github.com/b451c/ReaperHaptic"]https://github.com/b451c/ReaperHaptic[/URL]
 
-[HR][/HR]
+
 [SIZE=2]Feedback and bug reports welcome! This is my first REAPER script and Logi Options+ plugin.[/SIZE]
 ```
 
